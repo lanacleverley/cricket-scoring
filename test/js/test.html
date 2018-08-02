@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <title>Cricket Calculator Tests</title>
- 
+
   <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.4.0.css">
   <script src="https://code.jquery.com/qunit/qunit-2.4.0.js"></script>
   <script src="../../web/js/cricketCalc.js"></script>
- 
+
   <script>
 
   QUnit.module( "module", {
@@ -16,7 +16,7 @@
     }, afterEach: function( assert ) {
     }
   });
-  
+
   QUnit.test("entering numbers adds to the score", function( assert ) {
     enter(1);
     assert.equal(getScore(), 1);
@@ -41,6 +41,14 @@
     assert.equal(getScore(), 0);
   });
 
+  QUnit.test("nan error", function( assert ) {
+    enter('1');
+    enter('.')
+    assert.equal(getScore(), 1);
+    assert.equal(getScorecard(), '1');
+    backspace();
+    assert.equal(getScore(), 1);
+  });
 
   function getScore() {
     return document.getElementById('score').innerHTML;
@@ -52,10 +60,10 @@
   </script>
 </head>
 <body>
- 
+
 <div id="qunit"></div>
 <div id="scorecard" style="display:none"></div>
 <div id="score" style="display:none">0</div>
- 
+
 </body>
 </html>
