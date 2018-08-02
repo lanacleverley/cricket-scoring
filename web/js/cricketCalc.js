@@ -17,7 +17,7 @@ function enter(key) {
     Removes the last entry from  the scorecard, and subtracts it from the total score.
 */
 function backspace() {
-    var previousBall = scorecard.charAt(scorecard.length - 1);
+    var previousBall = scorecard.charAt(scorecard.length);
     score = score - previousBall;
     scorecard = scorecard.substring(0, scorecard.length);
     document.getElementById('scorecard').innerHTML = scorecard;
